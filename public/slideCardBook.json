@@ -1,0 +1,63 @@
+[
+      {
+        "id": 1,
+        "name": "Health",
+        "image": "https://i.ibb.co.com/gF9zLqzT/healthcare.png",
+        "collection": "Special Collections"
+      },
+      {
+        "id": 2,
+        "name": "Sports",
+        "image": "https://i.ibb.co.com/0yC1pY0Z/sports.png",
+        "collection": "Best Collections"
+        
+      },
+      {
+        "id": 3,
+        "name": "Biography",
+        "image": "https://i.ibb.co.com/nMcvGvH8/application.png",
+        "collection": "Premium Collections"
+      },
+      {
+        "id": 4,
+        "name": "Science",
+        "image": "https://i.ibb.co.com/DDPY89DB/science.png",
+        "collection": "Exclusive Collections"
+      },
+      {
+        "id": 5,
+        "name": "Technology",
+        "image": "https://i.ibb.co.com/qFn8NtGX/technology.png",
+        "collection": "Top Collections"
+      },
+      {
+        "id": 6,
+        "name": "Fiction",
+        "image": "https://i.ibb.co.com/bMq7PZhk/science-fiction.png",
+        "collection": "Best Collections"
+      },
+      {
+        "id": 7,
+        "name": "History",
+        "image": "https://i.ibb.co.com/FL0PbNzZ/history.png",
+        "collection": "Rare Collections"
+      },
+      {
+        "id": 8,
+        "name": "Philosophy",
+        "image": "https://i.ibb.co.com/ccdm6DWc/philosophy.png",
+        "collection": "Premium Collections"
+      },
+      {
+        "id": 9,
+        "name": "Self-Help",
+        "image": "https://i.ibb.co.com/fG4C36w7/solidarity.png",
+        "collection": "Exclusive Collections"
+      },
+      {
+        "id": 10,
+        "name": "Travel",
+        "image": "https://i.ibb.co.com/MysJ3xct/travel-bag.png",
+        "collection": "Special Collections"
+      }
+    ]
