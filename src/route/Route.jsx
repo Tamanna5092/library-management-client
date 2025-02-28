@@ -10,7 +10,7 @@ const Route = createBrowserRouter([
         {
             index: true,
             element: <Home></Home>
-        }
+        },
       ]
     },
   ]);

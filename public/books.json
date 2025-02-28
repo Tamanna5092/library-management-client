@@ -1,5 +1,6 @@
 [
     {
+      "id": 1,
       "image": "https://i.ibb.co.com/vxCnLSWt/The-Lost-Horizon.jpg",
       "name": "The Lost Horizon",
       "quantity": 12,
@@ -10,6 +11,7 @@
       "content": "This book takes readers on an adventurous journey through the unknown, filled with deep philosophical insights and breathtaking landscapes."
     },
     {
+      "id": 2,
       "image": "https://i.ibb.co.com/ymdH6HrZ/Echoes-of-the-Past.jpg",
       "name": "Echoes of the Past",
       "quantity": 8,
@@ -20,6 +22,7 @@
       "content": "A must-read for history enthusiasts, this book unravels mysteries and explores the past in fascinating detail."
     },
     {
+      "id": 3,
       "image": "https://i.ibb.co.com/s4YHfnJ/The-Shadow-Within.jpg",
       "name": "The Shadow Within",
       "quantity": 15,
@@ -30,6 +33,7 @@
       "content": "Full of twists and suspense, this novel will keep you on the edge of your seat till the very last page."
     },
     {
+      "id": 4,
       "image": "https://i.ibb.co.com/bj84sZyw/Galactic-Wars.jpg",
       "name": "Galactic Wars",
       "quantity": 5,
@@ -40,6 +44,7 @@
       "content": "An epic space saga filled with battles, diplomacy, and mind-bending futuristic technology."
     },
     {
+      "id": 5,
       "image": "https://i.ibb.co.com/9mHGSK6F/Whispers-of-the-Night.webp",
       "name": "Whispers of the Night",
       "quantity": 10,
@@ -50,6 +55,7 @@
       "content": "A moving drama that explores deep emotions and relationships through beautifully crafted storytelling."
     },
     {
+      "id": 6,
       "image": "https://i.ibb.co.com/twSNKwt8/The-Enchanted-Forest.jpg",
       "name": "The Enchanted Forest",
       "quantity": 7,
@@ -60,6 +66,7 @@
       "content": "Step into a world of magic and wonder where ancient secrets and mystical creatures await."
     },
     {
+      "id": 7,
       "image": "https://i.ibb.co.com/jvVMNpSp/Code-of-the-Future.jpg",
       "name": "Code of the Future",
       "quantity": 20,
@@ -70,6 +77,7 @@
       "content": "This book explores the impact of artificial intelligence and its role in shaping our future."
     },
     {
+      "id": 8,
       "image": "https://i.ibb.co.com/xSdk7f7s/Echoes-of-the-Heart.jpg",
       "name": "Echoes of the Heart",
       "quantity": 9,
@@ -80,6 +88,7 @@
       "content": "An emotional rollercoaster of love, fate, and second chances that will captivate your heart."
     },
     {
+      "id": 9,
       "image": "https://i.ibb.co.com/p67R5y8c/The-Last-Stand.webp",
       "name": "The Last Stand",
       "quantity": 6,

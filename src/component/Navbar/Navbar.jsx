@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Navbar = () => {
+  const {user} = useContext(AuthContext)
+
+
   const navlinks = (
     <>
       <li>
@@ -51,9 +55,12 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navlinks}</ul>
         </div>
-        <div className="navbar-end">
+        {!user && (
+          <div className="navbar-end">
           <a className="btn">Login</a>
         </div>
+          )
+        }
       </div>
     </div>
   );
