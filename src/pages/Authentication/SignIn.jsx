@@ -6,7 +6,7 @@ const SignIn = () => {
   return (
     <div className="grid grid-cols-1 max-w-7xl mx-auto my-20 md:grid-cols-2 gap-6">
       <div>
-        <img src={signIn} alt="" />
+        <img className="w-full h-full" src={signIn} alt="" />
       </div>
       <div className="w-full max-w-md mx-auto p-4 shadow-md sm:p-8 dark:bg-gray-50 dark:text-gray-800">
         <h2 className="mb-3 text-3xl font-semibold text-center">
@@ -76,7 +76,7 @@ const SignIn = () => {
             Sign in
           </button>
         </form>
-        <p className="text-center mt-4">Don't have account?{' '}<Link className="hover:underline">Sign Up</Link></p>
+        <p className="text-center mt-4">Don't have account?{' '}<Link to={'/signUp'} className="hover:underline">Sign Up</Link></p>
       </div>
     </div>
   );
