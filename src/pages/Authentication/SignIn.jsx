@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import signIn from '../../assets/signIn.jpg'
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
 
 const SignIn = () => {
+  const {showPassword, setShowPassword} = useContext(AuthContext)
+
   return (
     <div className="grid grid-cols-1 max-w-7xl mx-auto my-20 md:grid-cols-2 gap-6">
-      <div>
+      <div className="">
         <img className="w-full h-full" src={signIn} alt="" />
       </div>
-      <div className="w-full max-w-md mx-auto p-4 shadow-md sm:p-8 dark:bg-gray-50 dark:text-gray-800">
+      <div className="w-full p-4 shadow-md sm:p-8 dark:bg-gray-50 dark:text-gray-800">
         <h2 className="mb-3 text-3xl font-semibold text-center">
           Login to your account
         </h2>
@@ -60,13 +65,16 @@ const SignIn = () => {
                   Forgot password?
                 </a>
               </div>
+              <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
                 placeholder="******"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
+              <span onClick={()=> setShowPassword(!showPassword)} className=" absolute top-3 right-3">{showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}</span>
+              </div>
             </div>
           </div>
           <button

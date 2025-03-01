@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import signUp from "../../assets/signUp.jpg";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const SignUp = () => {
+  const {showPassword, setShowPassword} = useContext(AuthContext)
+
+
+
   return (
     <div className="grid grid-cols-1 max-w-7xl mx-auto my-20 md:grid-cols-2 gap-6">
       <div>
         <img className="w-full h-full" src={signUp} alt="" />
       </div>
-      <div className="w-full max-w-md mx-auto p-4 shadow-md sm:p-8 dark:bg-gray-50 dark:text-gray-800">
+      <div className="w-full p-4 shadow-md sm:p-8 dark:bg-gray-50 dark:text-gray-800">
         <h2 className="mb-3 text-3xl font-semibold text-center">
           Sign Up your account
         </h2>
@@ -46,7 +53,7 @@ const SignUp = () => {
                 type="text"
                 name="photo"
                 id="photo"
-                placeholder="leroy@jenkins.com"
+                placeholder="photo url"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
             </div>
@@ -54,20 +61,23 @@ const SignUp = () => {
               <label htmlFor="password" className="">
                 Password
               </label>
+              <div className="relative">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
                 placeholder="******"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
-            </div>
+              <span onClick={()=> setShowPassword(!showPassword)} className=" absolute top-3 right-3">{showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}</span>
+              </div>
+            </div> 
             <div className="space-y-2">
               <label htmlFor="password" className="">
                 Confirmed Password
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="confirmed_password"
                 id="confirmed_password"
                 placeholder="******"
