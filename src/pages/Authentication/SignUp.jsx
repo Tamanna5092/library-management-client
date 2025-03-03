@@ -1,25 +1,44 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import signUp from "../../assets/signUp.jpg";
+import signUpImg from "../../assets/signUp.jpg";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { AuthContext } from "../../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const {showPassword, setShowPassword} = useContext(AuthContext)
+  const {showPassword, setShowPassword, createUser} = useContext(AuthContext)
 
+  // create user
+  const handleSignUp = async(e) => {
+    console.log('User create successfully')
+    e.preventDefault()
+    const form = e.target
+    const name = form.name.value
+    const email = form.email.value
+    const photo = form.photo.value
+    const password = form.password.value
+    // console.log(name,email, photo, password)
+    try {
+      const result = await createUser(email, password)
+      console.log(result)
+      toast.success('User Create Successful')
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
 
   return (
     <div className="grid grid-cols-1 max-w-7xl mx-auto my-20 md:grid-cols-2 gap-6">
       <div>
-        <img className="w-full h-full" src={signUp} alt="" />
+        <img className="w-full h-full" src={signUpImg} alt="" />
       </div>
       <div className="w-full p-4 shadow-md sm:p-8 dark:bg-gray-50 dark:text-gray-800">
         <h2 className="mb-3 text-3xl font-semibold text-center">
           Sign Up your account
         </h2>
-        <form noValidate="" action="" className="space-y-8 mt-8">
+        <form onSubmit={handleSignUp} className="space-y-8 mt-8">
           <div className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="name" className="block">
@@ -86,7 +105,7 @@ const SignUp = () => {
             </div>
           </div>
           <button
-            type="button"
+            type="submit"
             className="w-full px-8 py-3 font-semibold rounded-md bg-info dark:bg-violet-600 dark:text-gray-50"
           >
             Sign Up
