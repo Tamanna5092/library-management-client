@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import signinImg from '../../assets/signIn.jpg'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import toast from "react-hot-toast";
 
 const SignIn = () => {
+  const navigate = useNavigate()
   const {showPassword, setShowPassword, signInWithGoogle, signIn} = useContext(AuthContext)
 
   // google sign in
@@ -30,7 +31,9 @@ const SignIn = () => {
       const result = await signIn(email, password)
       toast.success('Sign In Successful')
       console.log(result.user)
+      navigate('/')
     } catch (error) {
+      console.error(error)
        toast.error(error.message)
     }
   }

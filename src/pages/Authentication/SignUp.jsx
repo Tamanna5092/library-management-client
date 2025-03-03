@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signUpImg from "../../assets/signUp.jpg";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
@@ -7,7 +7,8 @@ import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const {showPassword, setShowPassword, createUser} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const {showPassword, setShowPassword, createUser, user, setUser, updateUser} = useContext(AuthContext)
 
   // create user
   const handleSignUp = async(e) => {
@@ -22,6 +23,9 @@ const SignUp = () => {
     try {
       const result = await createUser(email, password)
       console.log(result)
+      await updateUser(name, photo)
+      setUser({...user, displayName:name, photoURL:photo})
+      navigate('/')
       toast.success('User Create Successful')
     } catch (error) {
       console.error(error)
