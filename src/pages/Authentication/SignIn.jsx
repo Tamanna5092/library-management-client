@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const SignIn = () => {
   const navigate = useNavigate()
-  const {showPassword, setShowPassword, signInWithGoogle, signIn} = useContext(AuthContext)
+  const {showPassword, setShowPassword, signInWithGoogle, signIn, error, setError} = useContext(AuthContext)
 
   // google sign in
   const handleGoogleSignIn = async() => {
@@ -26,7 +26,9 @@ const SignIn = () => {
     const form = e.target
     const email = form.email.value
     const password = form.password.value
-    // console.log(email, password)
+
+    setError('')
+
     try {
       const result = await signIn(email, password)
       toast.success('Sign In Successful')
@@ -34,7 +36,7 @@ const SignIn = () => {
       navigate('/')
     } catch (error) {
       console.error(error)
-       toast.error(error.message)
+       setError('Invalid email or password')
     }
   }
 
@@ -103,7 +105,7 @@ const SignIn = () => {
                 placeholder="******"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
-              <span onClick={()=> setShowPassword(!showPassword)} className=" absolute top-3 right-3">{showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}</span>
+              <span onClick={()=> setShowPassword(!showPassword)} className=" absolute top-3 right-3 cursor-pointer">{showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}</span>
               </div>
             </div>
           </div>
@@ -114,6 +116,9 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
+        {
+          error && <p className="text-center text-red-800 mt-4">{error}</p>
+        }
         <p className="text-center mt-4">Don't have account?{' '}<Link to={'/signUp'} className="hover:underline">Sign Up</Link></p>
       </div>
     </div>

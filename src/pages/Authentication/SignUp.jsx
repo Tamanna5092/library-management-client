@@ -8,18 +8,35 @@ import toast from "react-hot-toast";
 
 const SignUp = () => {
   const navigate = useNavigate()
-  const {showPassword, setShowPassword, createUser, user, setUser, updateUser} = useContext(AuthContext)
+  const {showPassword, setShowPassword, createUser, user, setUser, updateUser, error, setError} = useContext(AuthContext)
 
   // create user
   const handleSignUp = async(e) => {
     console.log('User create successfully')
     e.preventDefault()
-    const form = e.target
-    const name = form.name.value
-    const email = form.email.value
-    const photo = form.photo.value
-    const password = form.password.value
-    // console.log(name,email, photo, password)
+    const from = e.target
+    const name = from.name.value
+    const email = from.email.value
+    const photo = from.photo.value
+    const password = from.password.value
+    const confirmedPassword = from.confirmed_password.value
+
+    setError("")
+
+    if(password.length < 6){
+      setError('Password must be at least 6 characters')
+      return
+    }
+    else if (!/^(?=.*[A-Z])(?=.*\d).+$/.test(password)){
+      setError('Password must be contain at least one uppercase letter and one number.')
+      return
+    }
+    else if(password !== confirmedPassword){
+      setError('Password does not match')
+      return
+    }
+
+    // console.log(name,email, photo, password, confirmedPassword)
     try {
       const result = await createUser(email, password)
       console.log(result)
@@ -92,7 +109,7 @@ const SignUp = () => {
                 placeholder="******"
                 className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
               />
-              <span onClick={()=> setShowPassword(!showPassword)} className=" absolute top-3 right-3">{showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}</span>
+              <span onClick={()=> setShowPassword(!showPassword)} className=" absolute top-3 right-3 cursor-pointer">{showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}</span>
               </div>
             </div> 
             <div className="space-y-2">
@@ -115,6 +132,9 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
+        {
+          error && <p className="text-center text-red-800 mt-4">{error}</p>
+        }
         <p className="text-center mt-4">
           Already have an account?{" "}
           <Link to={"/signIn"} className="hover:underline">

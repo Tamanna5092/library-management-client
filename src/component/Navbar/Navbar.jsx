@@ -12,13 +12,13 @@ const Navbar = () => {
         <Link to={'/'}>Home</Link>
       </li>
       <li>
-        <a>Add Book</a>
-      </li>
-      <li>
         <a>All Books</a>
       </li>
       <li>
-        <a>Borrowed Books</a>
+        <a>About</a>
+      </li>
+      <li>
+        <a>Contact</a>
       </li>
     </>
   );
@@ -75,7 +75,13 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow">
+            <li>
+        <Link>Add Book</Link>
+      </li>
+            <li>
+        <Link>Borrowed Books</Link>
+      </li>
             <li onClick={logOut}><button className="block text-center text-red-600">Logout</button></li>
           </ul>
         </div>
