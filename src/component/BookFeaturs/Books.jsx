@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Books = ({ book }) => {
-  const { id, name, image, author, quantity, category, short_description, rating, content} = book
+  const { _id, name, image, short_description, } = book;
 
     return (
         <div className=''>
@@ -18,7 +18,7 @@ const Books = ({ book }) => {
             <h2 className="text-2xl font-semibold">{name}</h2>
             <p>{short_description}</p>
             <div className="card-actions">
-              <Link to={`/bookDetails/${id}`} className="btn bg-[#FF5722] text-white px-10 mt-10 rounded-full hover:bg-black">View Details</Link>
+              <Link to={`/bookDetails/${_id}`} className="btn bg-[#FF5722] text-white px-10 mt-10 rounded-full hover:bg-black">View Details</Link>
             </div>
           </div>
         </div>
