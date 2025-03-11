@@ -18,7 +18,7 @@ const Books = ({ book }) => {
             <h2 className="text-2xl font-semibold">{name}</h2>
             <p>{short_description}</p>
             <div className="card-actions">
-              <Link to={`/bookDetails/${_id}`} className="btn bg-[#FF5722] text-white px-10 mt-10 rounded-full hover:bg-black">View Details</Link>
+              <Link to={`/book/${_id}`} className="btn bg-[#FF5722] text-white px-10 mt-10 rounded-full hover:bg-black">View Details</Link>
             </div>
           </div>
         </div>

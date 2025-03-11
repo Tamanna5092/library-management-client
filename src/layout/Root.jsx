@@ -5,7 +5,7 @@ import Footer from '../component/Footer/Footer';
 
 const Root = () => {
     return (
-        <div>
+        <div className='font-playfair'>
             {/* navbar */}
             <Navbar></Navbar>
             {/* outlet */}

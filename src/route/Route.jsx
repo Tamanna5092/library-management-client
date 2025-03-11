@@ -23,8 +23,9 @@ const Route = createBrowserRouter([
           element: <SignUp></SignUp>
         },
         {
-          path: '/bookDetails/:id',
-          element: <BookDetails></BookDetails>
+          path: '/book/:id',
+          element: <BookDetails></BookDetails>,
+          loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/book/${params.id}`)
         }
       ]
     },
