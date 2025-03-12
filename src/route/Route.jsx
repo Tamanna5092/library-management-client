@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import SignIn from "../pages/Authentication/SignIn";
 import SignUp from "../pages/Authentication/SignUp";
 import BookDetails from "../pages/BookDetails/BookDetails";
+import AddBook from "../pages/AddBook/AddBook";
 
 const Route = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const Route = createBrowserRouter([
           path: '/book/:id',
           element: <BookDetails></BookDetails>,
           loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/book/${params.id}`)
+        },
+        {
+          path: '/addBook',
+          element: <AddBook></AddBook>
         }
       ]
     },
