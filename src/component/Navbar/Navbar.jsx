@@ -80,7 +80,7 @@ const Navbar = () => {
         <Link to={'/addBook'}>Add Book</Link>
       </li>
             <li>
-        <Link>Borrowed Books</Link>
+        <Link to={'/borrowedBooks'}>Borrowed Books</Link>
       </li>
             <li onClick={logOut}><button className="block text-center text-red-600">Logout</button></li>
           </ul>

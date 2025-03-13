@@ -4,6 +4,7 @@ import axios from "axios";
 
 const BookFeaturs = () => {
   const [books, setBooks] = useState([])
+  const [dataLength, setDataLength] = useState(6)
 
   useEffect(()=> {
     const getData = async () => {
@@ -25,8 +26,13 @@ const BookFeaturs = () => {
       </div>
       <div className="grid grid-cols-1 gap-6 mt-10 md:grid-cols-2 lg:grid-cols-3">
        {
-        books.map((book) => <Books key={book._id} book={book}></Books>)
+        books.slice(0, dataLength).map((book) => <Books key={book._id} book={book}></Books>)
        }
+      </div>
+      <div className={dataLength === books.length && 'hidden'}>
+      <div onClick={()=> setDataLength(books.length)} className="text-center">
+        <button className="btn bg-[#FF5722] text-white px-10 mt-10 hover:bg-black">Show All books</button>
+      </div>
       </div>
     </div>
   );

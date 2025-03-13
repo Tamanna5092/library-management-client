@@ -14,10 +14,10 @@ const AddBook = () => {
         const category = from.category.value;
         const price = from.price.value;
         const quantity = from.quantity.value;
-        const pages = from.pages.value;
+        const number_of_pages = from.number_of_pages.value;
         const publishing_year = from.publishing_year.value;
         const publisher = from.publisher.value;
-        const description = from.description.value;
+        const short_description = from.short_description.value;
         const content = from.content.value; 
         
         const bookData = {
@@ -27,10 +27,10 @@ const AddBook = () => {
             category,
             price,
             quantity,
-            pages,
+            number_of_pages,
             publishing_year,
             publisher,
-            description,
+            short_description,
             content
         }
 
@@ -119,10 +119,10 @@ const AddBook = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="page">Number of pages</label>
+              <label htmlFor="number_of_pages">Number of pages</label>
               <input
-                id="pages"
-                name="pages"
+                id="number_of_pages"
+                name="number_of_pages"
                 type="number"
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
@@ -149,10 +149,10 @@ const AddBook = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="description">Short description</label>
+              <label htmlFor="short_description">Short description</label>
               <input
-                id="description"
-                name="description"
+                id="short_description"
+                name="short_description"
                 type="text"
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
