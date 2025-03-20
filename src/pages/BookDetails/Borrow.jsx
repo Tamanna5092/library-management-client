@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Borrow = ({book} ) => {
-  const { name, image, category} = book
+  const {_id, name, image, category} = book
   console.log(book)
   const {user} = useContext(AuthContext)
+  const navigate = useNavigate()
 
 const handleBorrowBook = async(e) => {
   e.preventDefault()
@@ -16,12 +18,14 @@ const handleBorrowBook = async(e) => {
   const email = from.email.value
   const borrowed_date = from.borrowed_date.value
   const return_date = from.return_date.value
-  console.log(name, email, borrowed_date, return_date)
+  console.log(_id, name, email, borrowed_date, return_date)
 
   const borrowData = {
+    bookId: _id,
     name,
     image,
     category,
+    borrowed_date,
     return_date,
     userInfo: {
       user_name,
@@ -33,9 +37,10 @@ const handleBorrowBook = async(e) => {
     const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/borrow`, borrowData)
     console.log(data)
     toast.success('Book borrowed successfull')
+    navigate('/')
   }
   catch(error) {
-    console.log(error)
+    toast.error(error.response.data)
   }
 }
 

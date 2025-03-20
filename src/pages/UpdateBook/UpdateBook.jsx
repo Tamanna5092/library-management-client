@@ -1,10 +1,14 @@
-import axios from "axios";
-import React from "react";
-import toast from "react-hot-toast";
+import axios from 'axios';
+import React from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
-const AddBook = () => {
+const UpdateBook = () => {
+    const updateBook = useLoaderData()
+    const { _id, name, image, author, category, price, quantity, number_of_pages, publishing_year, publisher, short_description, content } = updateBook;
+    const navigate = useNavigate()
 
-    const handleAddBook = async(e) => {
+    const handleUpdateBook = async(e) => {
         e.preventDefault();
         console.log('button clicked');
         const from = e.target;
@@ -19,8 +23,9 @@ const AddBook = () => {
         const publisher = from.publisher.value;
         const short_description = from.short_description.value;
         const content = from.content.value; 
+        console.log(name, image, author, category, price, quantity, number_of_pages, publishing_year, publisher, short_description, content);
         
-        const bookData = {
+        const updateBook = {
             name,
             image,
             author,
@@ -35,9 +40,16 @@ const AddBook = () => {
         }
 
         try {
-          const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book`, bookData);
+          const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/book/${_id}`, updateBook);
           console.log(data);
-          toast.success('Book added successfully');
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Book update has been saved",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          navigate('/allBooks')
         }
         catch (error) {
             console.log(error);
@@ -46,14 +58,14 @@ const AddBook = () => {
     }
 
 
-  return (
-    <div>
+    return (
+        <div>
       <section className="p-6 max-w-5xl mx-auto shadow-md dark:bg-gray-100 dark:text-gray-900">
         <h1 className="font-rubik text-3xl text-center font-semibold my-5">
-          Add Book
+          Update Book
         </h1>
         <form
-          onSubmit={handleAddBook}
+          onSubmit={handleUpdateBook}
           className="container flex flex-col mx-auto space-y-6"
         >
           <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
@@ -63,6 +75,7 @@ const AddBook = () => {
                 id="name"
                 name="name"
                 type="text"
+                defaultValue={name}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -73,6 +86,7 @@ const AddBook = () => {
                 id="image"
                 name="image"
                 type="text"
+                defaultValue={image}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -83,34 +97,21 @@ const AddBook = () => {
                 id="author"
                 name="author"
                 type="text"
-                placeholder=""
+                defaultValue={author}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="category">Category</label>
-              <div className='pt-2'>
-              <select name="category" id="category" required>
-                <option className='disabled' value="">Select Category</option>
-                <option value="Italy">Science Fiction</option>
-                <option value="Spain">Fantasy</option>
-                <option value="England">History</option>
-                <option value="Germany">Philosophy</option>
-                <option value="Netherlands">Religion</option>
-                <option value="Netherlands">Travel</option>
-                <option value="Germany">Self-Help</option>
-                <option value="Netherlands">Romance</option>
-                <option value="Switzerland">Adventure</option>
-                <option value="Netherlands">Economics</option>
-                <option value="Switzerland">Cooking</option>
-                <option value="France">Mystery & Thriller</option>
-                <option value="Switzerland">Science & Math</option>
-                <option value="Netherlands">Business & Finance</option>
-                <option value="Germany">Science & Technology</option>
-                <option value="Switzerland">Art & Photography</option>
-              </select>
-              </div>
+              <input
+                id="category"
+                name="category"
+                type="text"
+                defaultValue={category}
+                required
+                className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+              />
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="price">Price</label>
@@ -118,6 +119,7 @@ const AddBook = () => {
                 id="price"
                 name="price"
                 type="number"
+                defaultValue={price}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -128,6 +130,7 @@ const AddBook = () => {
                 id="quantity"
                 name="quantity"
                 type="number"
+                defaultValue={quantity}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -138,6 +141,7 @@ const AddBook = () => {
                 id="number_of_pages"
                 name="number_of_pages"
                 type="number"
+                defaultValue={number_of_pages}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -148,6 +152,7 @@ const AddBook = () => {
                 id="publishing_year"
                 name="publishing_year"
                 type="number"
+                defaultValue={publishing_year}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -158,6 +163,7 @@ const AddBook = () => {
                 id="publisher"
                 name="publisher"
                 type="text"
+                defaultValue={publisher}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -168,6 +174,7 @@ const AddBook = () => {
                 id="short_description"
                 name="short_description"
                 type="text"
+                defaultValue={short_description}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -178,6 +185,7 @@ const AddBook = () => {
                 id="content"
                 rows={5}
                 placeholder="Content"
+                defaultValue={content}
                 required
                 className="w-full border mt-4"
               ></textarea>
@@ -185,13 +193,13 @@ const AddBook = () => {
           </div>
           <div className="flex justify-end">
             <button type="submit" className="btn bg-[#FF5722] text-white px-10 hover:bg-black">
-              Add Book
+            Update
             </button>
           </div>
         </form>
       </section>
     </div>
-  );
+    );
 };
 
-export default AddBook;
+export default UpdateBook;
