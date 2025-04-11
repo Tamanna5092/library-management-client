@@ -4,7 +4,7 @@ import axios from "axios";
 
 const BookFeaturs = () => {
   const [books, setBooks] = useState([])
-  const [dataLength, setDataLength] = useState(6)
+  const [dataLength, setDataLength] = useState(9)
 
   useEffect(()=> {
     const getData = async () => {

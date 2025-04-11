@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../../provider/AuthProvider";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
 const BorrowedBooks = () => {
   const [borrowedBooks, setBorrowedBooks] = useState([]);
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
     getData();
@@ -20,8 +24,33 @@ const BorrowedBooks = () => {
     }
   };
 
-  const handleReturnBook = async (id) => {
-    console.log('Return button clicked');
+  const handleReturnBook = async (id, bookId) => {
+    try {
+      const { data } = await axios.patch(
+        `${import.meta.env.VITE_API_URL}/borrow/${id}`, {bookId, email: user?.email}
+      );
+      console.log(data);
+      if (data.deletedCount > 0) {
+        Swal.fire({
+          title: "Good job!",
+          text: "You returned the button!",
+          icon: "success"
+        });
+        getData();
+      }
+    } catch (error) {
+      const status = error.response?.status;
+      const message = error.response?.data?.message || "Something went wrong!";
+      if (status === 403) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Unauthorized: You can not return this book"
+        });
+      } else {
+        toast.error(message);
+      }
+    }
   }
 
   return (
@@ -136,7 +165,7 @@ const BorrowedBooks = () => {
                       </td>
                       <td class="px-4 py-4 text-sm whitespace-nowrap">
                         <div class="flex items-center gap-x-6">
-                          <button onClick={handleReturnBook} class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+                          <button onClick={() => handleReturnBook(borrowedBook._id, borrowedBook.bookId)} class="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
                              Return
                           </button>
                         </div>

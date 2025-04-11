@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const Borrow = ({book} ) => {
-  const {_id, name, image, category} = book
+  const {_id, name, image, category, quantity} = book
   console.log(book)
   const {user} = useContext(AuthContext)
   const navigate = useNavigate()
@@ -20,11 +20,13 @@ const handleBorrowBook = async(e) => {
   const return_date = from.return_date.value
   console.log(_id, name, email, borrowed_date, return_date)
 
+  
   const borrowData = {
     bookId: _id,
     name,
     image,
     category,
+    quantity,
     borrowed_date,
     return_date,
     userInfo: {
@@ -104,8 +106,8 @@ const handleBorrowBook = async(e) => {
             </div>
           </div>
           <div className="flex justify-center">
-            <button type="submit" className="btn bg-[#FF5722] text-white px-10 hover:bg-black">
-              Submit
+            <button type="submit" disabled={quantity === 0} className="btn bg-[#FF5722] text-white px-10 hover:bg-black">
+            {quantity === 0 ? "Out of Stock" : "Submit"}
             </button>
           </div>
         </form>

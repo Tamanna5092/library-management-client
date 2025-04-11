@@ -1,8 +1,10 @@
 import axios from "axios";
 import React from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
+  const navigate = useNavigate()
 
     const handleAddBook = async(e) => {
         e.preventDefault();
@@ -12,10 +14,10 @@ const AddBook = () => {
         const image = from.image.value;
         const author = from.author.value;
         const category = from.category.value;
-        const price = from.price.value;
-        const quantity = from.quantity.value;
-        const number_of_pages = from.number_of_pages.value;
-        const publishing_year = from.publishing_year.value;
+        const price = parseInt(from.price.value);
+        const quantity = parseInt(from.quantity.value);
+        const number_of_pages = parseInt(from.number_of_pages.value);
+        const publishing_year = parseInt(from.publishing_year.value);
         const publisher = from.publisher.value;
         const short_description = from.short_description.value;
         const content = from.content.value; 
@@ -38,6 +40,7 @@ const AddBook = () => {
           const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book`, bookData);
           console.log(data);
           toast.success('Book added successfully');
+          navigate('/')
         }
         catch (error) {
             console.log(error);

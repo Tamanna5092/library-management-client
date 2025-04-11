@@ -16,10 +16,10 @@ const UpdateBook = () => {
         const image = from.image.value;
         const author = from.author.value;
         const category = from.category.value;
-        const price = from.price.value;
-        const quantity = from.quantity.value;
-        const number_of_pages = from.number_of_pages.value;
-        const publishing_year = from.publishing_year.value;
+        const price = parseInt(from.price.value);
+        const quantity = parseInt(from.quantity.value);
+        const number_of_pages = parseInt(from.number_of_pages.value);
+        const publishing_year = parseInt(from.publishing_year.value);
         const publisher = from.publisher.value;
         const short_description = from.short_description.value;
         const content = from.content.value; 
@@ -187,7 +187,7 @@ const UpdateBook = () => {
                 placeholder="Content"
                 defaultValue={content}
                 required
-                className="w-full border mt-4"
+                className="w-full border mt-4 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               ></textarea>
             </div>
           </div>
