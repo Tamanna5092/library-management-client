@@ -8,11 +8,14 @@ import AddBook from "../pages/AddBook/AddBook";
 import BorrowedBooks from "../pages/Borrow/BorrowedBooks";
 import AllBooks from "../pages/AllBooks/AllBooks";
 import UpdateBook from "../pages/UpdateBook/UpdateBook";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const Route = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
             index: true,
@@ -28,24 +31,24 @@ const Route = createBrowserRouter([
         },
         {
           path: '/book/:id',
-          element: <BookDetails></BookDetails>,
+          element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
           loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/book/${params.id}`)
         },
         {
           path: '/addBook',
-          element: <AddBook></AddBook>
+          element: <PrivateRoute><AddBook></AddBook></PrivateRoute>
         },
         {
           path : '/allBooks',
-          element: <AllBooks></AllBooks>
+          element: <PrivateRoute><AllBooks></AllBooks></PrivateRoute>,
         },
         {
           path: '/borrowedBooks',
-          element: <BorrowedBooks></BorrowedBooks>
+          element: <PrivateRoute><BorrowedBooks></BorrowedBooks></PrivateRoute>
         },
         {
           path: '/updateBook/:id',
-          element: <UpdateBook></UpdateBook>,
+          element: <PrivateRoute><UpdateBook></UpdateBook></PrivateRoute>,
           loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/book/${params.id}`)
         }
       ]

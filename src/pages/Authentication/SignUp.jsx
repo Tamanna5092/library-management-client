@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signUpImg from "../../assets/signUp.jpg";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
@@ -7,8 +7,10 @@ import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const navigate = useNavigate()
   const {showPassword, setShowPassword, createUser, user, setUser, updateUser, error, setError} = useContext(AuthContext)
+  const navigate = useNavigate()
+  const location = useLocation()
+  const fromState = location.state || '/'
 
   // create user
   const handleSignUp = async(e) => {
@@ -42,8 +44,8 @@ const SignUp = () => {
       console.log(result)
       await updateUser(name, photo)
       setUser({...user, displayName:name, photoURL:photo})
-      navigate('/')
       toast.success('User Create Successful')
+      navigate(fromState, {replace: true})
     } catch (error) {
       console.error(error)
     }
@@ -127,7 +129,7 @@ const SignUp = () => {
           </div>
           <button
             type="submit"
-            className="w-full px-8 py-3 font-semibold rounded-md bg-info dark:bg-violet-600 dark:text-gray-50"
+            className="w-full px-8 py-3 font-semibold bg-black text-white border-none hover:bg-[#FF5722]"
           >
             Sign Up
           </button>

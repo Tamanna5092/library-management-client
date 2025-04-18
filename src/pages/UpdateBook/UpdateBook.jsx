@@ -104,14 +104,26 @@ const UpdateBook = () => {
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="category">Category</label>
-              <input
-                id="category"
-                name="category"
-                type="text"
-                defaultValue={category}
-                required
-                className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
-              />
+              <div className='pt-2  dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300'>
+              <select name="category" id="category" defaultValue={category} required className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300">
+                <option className='disabled' value="">Select Category</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="History">History</option>
+                <option value="Philosophy">Philosophy</option>
+                <option value="Religion">Religion</option>
+                <option value="Travel">Travel</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="Romance">Romance</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Economics">Economics</option>
+                <option value="Cooking">Cooking</option>
+                <option value="Mystery & Thriller">Mystery & Thriller</option>
+                <option value="Business & Finance">Business & Finance</option>
+                <option value="Science & Technology">Science & Technology</option>
+                <option value="Art & Photography">Art & Photography</option>
+              </select>
+              </div>
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="price">Price</label>

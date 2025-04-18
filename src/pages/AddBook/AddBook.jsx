@@ -93,25 +93,24 @@ const AddBook = () => {
             </div>
             <div className="col-span-full sm:col-span-3">
               <label htmlFor="category">Category</label>
-              <div className='pt-2'>
-              <select name="category" id="category" required>
+              <div className='pt-2  dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300'>
+              <select name="category" id="category" required className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300">
                 <option className='disabled' value="">Select Category</option>
-                <option value="Italy">Science Fiction</option>
-                <option value="Spain">Fantasy</option>
-                <option value="England">History</option>
-                <option value="Germany">Philosophy</option>
-                <option value="Netherlands">Religion</option>
-                <option value="Netherlands">Travel</option>
-                <option value="Germany">Self-Help</option>
-                <option value="Netherlands">Romance</option>
-                <option value="Switzerland">Adventure</option>
-                <option value="Netherlands">Economics</option>
-                <option value="Switzerland">Cooking</option>
-                <option value="France">Mystery & Thriller</option>
-                <option value="Switzerland">Science & Math</option>
-                <option value="Netherlands">Business & Finance</option>
-                <option value="Germany">Science & Technology</option>
-                <option value="Switzerland">Art & Photography</option>
+                <option value="Science Fiction">Science Fiction</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="History">History</option>
+                <option value="Philosophy">Philosophy</option>
+                <option value="Religion">Religion</option>
+                <option value="Travel">Travel</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="Romance">Romance</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Economics">Economics</option>
+                <option value="Cooking">Cooking</option>
+                <option value="Mystery & Thriller">Mystery & Thriller</option>
+                <option value="Business & Finance">Business & Finance</option>
+                <option value="Science & Technology">Science & Technology</option>
+                <option value="Art & Photography">Art & Photography</option>
               </select>
               </div>
             </div>
@@ -182,7 +181,7 @@ const AddBook = () => {
                 rows={5}
                 placeholder="Content"
                 required
-                className="w-full border mt-4"
+                className="w-full border mt-4 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               ></textarea>
             </div>
           </div>
