@@ -10,6 +10,8 @@ import AllBooks from "../pages/AllBooks/AllBooks";
 import UpdateBook from "../pages/UpdateBook/UpdateBook";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import Contact from "../pages/Contact/Contact";
+import About from "../pages/About/About";
 
 const Route = createBrowserRouter([
     {
@@ -50,6 +52,14 @@ const Route = createBrowserRouter([
           path: '/updateBook/:id',
           element: <PrivateRoute><UpdateBook></UpdateBook></PrivateRoute>,
           loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/book/${params.id}`)
+        },
+        {
+          path: '/contact',
+          element: <Contact></Contact>
+        },
+        {
+          path: '/about',
+          element: <About></About>
         }
       ]
     },

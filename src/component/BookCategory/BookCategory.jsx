@@ -3,23 +3,22 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const BookCategory = () => {
-  const [books, setBooks] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+    const [books, setBooks] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("");
 
-  useEffect(() => {
-    const getData = async () => {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/books`);
-      setBooks(data);
-      console.log(data);
-    };
-    getData();
-  }, []);
+    useEffect(() => {
+      const getData = async () => {
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/books`);
+        setBooks(data);
+        // console.log(data);
+      };
+      getData();
+    }, []);
 
   const handleShowAll = (category) => {
     const filteredBooks = books.filter((book) => book.category === category);
     console.log("Filtered Books:", filteredBooks);
     setSelectedCategory(filteredBooks);
-    console.log("Show All books clicked", category);
   }
 
   return (
@@ -42,7 +41,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Science Fiction")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Science Fiction")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>

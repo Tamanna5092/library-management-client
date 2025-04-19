@@ -14,8 +14,8 @@ const Banner = () => {
               <h1 className="font-poppins text-black text-3xl font-bold md:text-5xl">
                 Unlock the World of Knowledge
               </h1>
-              <p className="text-base text-[#666666] mt-5 md:text-lg">Access a vast and diverse collection of books anytime, anywhere, and explore limitless wisdom and knowledge.</p>
-              <p className="text-base text-[#666666] md:text-lg">Library offers a seamless reading experience that fits your lifestyle.</p>
+              <p className="text-base text-[#666666] mt-5 animate__animated animate__fadeInLeft md:text-lg">Access a vast and diverse collection of books anytime, anywhere, and explore limitless wisdom and knowledge.</p>
+              <p className="text-base text-[#666666] animate__animated animate__fadeInLeft md:text-lg">Library offers a seamless reading experience that fits your lifestyle.</p>
               <button className="btn w-fit bg-black text-white px-10 mt-10 rounded-full hover:bg-[#FF5722]">Explore more</button>
             </div>
             <div className="flex items-center justify-center">

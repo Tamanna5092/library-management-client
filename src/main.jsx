@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import AuthProvider from './provider/AuthProvider.jsx';
 import { Toaster } from 'react-hot-toast';
+import 'animate.css';
 
 
 createRoot(document.getElementById('root')).render(
