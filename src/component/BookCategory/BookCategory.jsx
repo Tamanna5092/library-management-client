@@ -4,21 +4,20 @@ import { Link } from "react-router-dom";
 
 const BookCategory = () => {
     const [books, setBooks] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState([]);
 
     useEffect(() => {
       const getData = async () => {
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/books`);
         setBooks(data);
-        // console.log(data);
       };
       getData();
     }, []);
 
   const handleShowAll = (category) => {
     const filteredBooks = books.filter((book) => book.category === category);
-    console.log("Filtered Books:", filteredBooks);
     setSelectedCategory(filteredBooks);
+    console.log(filteredBooks);
   }
 
   return (
@@ -62,7 +61,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Fantasy")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Fantasy")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -83,7 +82,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("History")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("History")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -104,7 +103,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Philosophy")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Philosophy")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -125,7 +124,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Religion")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Religion")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -146,7 +145,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Travel")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Travel")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -167,7 +166,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Self-Help")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Self-Help")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -188,7 +187,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Romance")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Romance")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -209,7 +208,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Adventure")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Adventure")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -230,7 +229,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Economics")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Economics")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>{" "}
@@ -251,7 +250,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Cooking")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Cooking")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -272,7 +271,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Mystery & Thriller")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Mystery & Thriller")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -293,7 +292,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                <li onClick={() => handleShowAll("Art & Photography")} className="ml-2 font-bold text-black">Show All</li>
+                <Link onClick={() => handleShowAll("Art & Photography")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -314,7 +313,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                 <li onClick={() => handleShowAll("Business & Finance")} className="ml-2 font-bold text-black">Show All</li>
+                 <Link onClick={() => handleShowAll("Business & Finance")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>
@@ -335,7 +334,7 @@ const BookCategory = () => {
                     <Link to={`/book/${book._id}`}>{book.name}</Link>
                   </li>
                 ))}
-                 <li onClick={() => handleShowAll("Science & Technology")} className="ml-2 font-bold text-black">Show All</li>
+                 <Link onClick={() => handleShowAll("Science & Technology")} className="ml-2 font-bold text-black">Show All</Link>
             </ul>
           </div>
         </div>

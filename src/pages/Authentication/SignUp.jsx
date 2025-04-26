@@ -5,6 +5,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import { AuthContext } from "../../provider/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const SignUp = () => {
   const {showPassword, setShowPassword, createUser, user, setUser, updateUser, error, setError} = useContext(AuthContext)
@@ -14,7 +15,6 @@ const SignUp = () => {
 
   // create user
   const handleSignUp = async(e) => {
-    console.log('User create successfully')
     e.preventDefault()
     const from = e.target
     const name = from.name.value
@@ -38,12 +38,11 @@ const SignUp = () => {
       return
     }
 
-    // console.log(name,email, photo, password, confirmedPassword)
     try {
       const result = await createUser(email, password)
-      console.log(result)
       await updateUser(name, photo)
-      setUser({...user, displayName:name, photoURL:photo})
+      setUser({...result?.user, displayName:name, photoURL:photo})
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email}, {withCredentials: true })
       toast.success('User Create Successful')
       navigate(fromState, {replace: true})
     } catch (error) {

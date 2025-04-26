@@ -6,19 +6,16 @@ import { useNavigate } from "react-router-dom";
 
 const Borrow = ({book} ) => {
   const {_id, name, image, category, quantity} = book
-  console.log(book)
   const {user} = useContext(AuthContext)
   const navigate = useNavigate()
 
 const handleBorrowBook = async(e) => {
   e.preventDefault()
-  console.log('Borrowing book')
   const from = e.target
   const user_name = from.user_name.value
   const email = from.email.value
   const borrowed_date = from.borrowed_date.value
   const return_date = from.return_date.value
-  console.log(_id, name, email, borrowed_date, return_date)
 
   
   const borrowData = {
@@ -37,7 +34,6 @@ const handleBorrowBook = async(e) => {
 
   try {
     const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/borrow`, borrowData)
-    console.log(data)
     toast.success('Book borrowed successfull')
     navigate('/')
   }

@@ -17,7 +17,6 @@ const BorrowedBooks = () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/borrows`
       );
-      console.log(data);
       setBorrowedBooks(data);
     } catch (error) {
       console.log(error);
@@ -29,7 +28,6 @@ const BorrowedBooks = () => {
       const { data } = await axios.patch(
         `${import.meta.env.VITE_API_URL}/borrow/${id}`, {bookId, email: user?.email}
       );
-      console.log(data);
       if (data.deletedCount > 0) {
         Swal.fire({
           title: "Good job!",

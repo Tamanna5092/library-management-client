@@ -8,13 +8,12 @@ const AddBook = () => {
 
     const handleAddBook = async(e) => {
         e.preventDefault();
-        console.log('button clicked');
         const from = e.target;
         const name = from.name.value;
         const image = from.image.value;
         const author = from.author.value;
         const category = from.category.value;
-        const price = parseInt(from.price.value);
+        const rating = parseFloat(from.rating.value);
         const quantity = parseInt(from.quantity.value);
         const number_of_pages = parseInt(from.number_of_pages.value);
         const publishing_year = parseInt(from.publishing_year.value);
@@ -27,7 +26,7 @@ const AddBook = () => {
             image,
             author,
             category,
-            price,
+            rating,
             quantity,
             number_of_pages,
             publishing_year,
@@ -38,7 +37,6 @@ const AddBook = () => {
 
         try {
           const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book`, bookData);
-          console.log(data);
           toast.success('Book added successfully');
           navigate('/')
         }
@@ -115,11 +113,14 @@ const AddBook = () => {
               </div>
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="price">Price</label>
+              <label htmlFor="rating">Rating</label>
               <input
-                id="price"
-                name="price"
+                id="rating"
+                name="rating"
                 type="number"
+                step="0.1"
+                min="0"
+                max="5"
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -181,7 +182,7 @@ const AddBook = () => {
                 rows={5}
                 placeholder="Content"
                 required
-                className="w-full border mt-4 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                className="w-full border px-2 mt-4 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               ></textarea>
             </div>
           </div>

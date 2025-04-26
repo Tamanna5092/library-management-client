@@ -8,16 +8,14 @@ const AllBooks = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/books`);
+      const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/books`, {withCredentials: true});
       setBooks(data);
-      console.log(data);
     };
     getData();
   }, []);
 
 
   const handleDelete = async (id) => {
-    console.log('delete book')
     // try {
     //   const { data } = await axios.delete(`${import.meta.env.VITE_API_URL}/book/${id}`)
     //   console.log('data from data',data)

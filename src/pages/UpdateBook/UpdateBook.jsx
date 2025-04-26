@@ -5,32 +5,30 @@ import Swal from 'sweetalert2';
 
 const UpdateBook = () => {
     const updateBook = useLoaderData()
-    const { _id, name, image, author, category, price, quantity, number_of_pages, publishing_year, publisher, short_description, content } = updateBook;
+    const { _id, name, image, author, category, rating, quantity, number_of_pages, publishing_year, publisher, short_description, content } = updateBook;
     const navigate = useNavigate()
 
     const handleUpdateBook = async(e) => {
         e.preventDefault();
-        console.log('button clicked');
         const from = e.target;
         const name = from.name.value;
         const image = from.image.value;
         const author = from.author.value;
         const category = from.category.value;
-        const price = parseInt(from.price.value);
+        const rating = parseFloat(from.rating.value);
         const quantity = parseInt(from.quantity.value);
         const number_of_pages = parseInt(from.number_of_pages.value);
         const publishing_year = parseInt(from.publishing_year.value);
         const publisher = from.publisher.value;
         const short_description = from.short_description.value;
-        const content = from.content.value; 
-        console.log(name, image, author, category, price, quantity, number_of_pages, publishing_year, publisher, short_description, content);
+        const content = from.content.value;
         
         const updateBook = {
             name,
             image,
             author,
             category,
-            price,
+            rating,
             quantity,
             number_of_pages,
             publishing_year,
@@ -40,8 +38,7 @@ const UpdateBook = () => {
         }
 
         try {
-          const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/book/${_id}`, updateBook);
-          console.log(data);
+          const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/book/${_id}`, updateBook, {withCredentials: true});
           Swal.fire({
             position: "center",
             icon: "success",
@@ -53,8 +50,17 @@ const UpdateBook = () => {
         }
         catch (error) {
             console.log(error);
+            if (error.response && error.response.status === 403) {
+              Swal.fire({
+                icon: "error",
+                title: "Unauthorized!",
+                text: "You are not allowed to update this book.",
+                timer: 2000,
+                showConfirmButton: false,
+                position: "center"
+              });
+            } 
         }
-
     }
 
 
@@ -126,12 +132,15 @@ const UpdateBook = () => {
               </div>
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label htmlFor="price">Price</label>
+              <label htmlFor="rating">Rating</label>
               <input
-                id="price"
-                name="price"
+                id="rating"
+                name="rating"
                 type="number"
-                defaultValue={price}
+                step="0.1"
+                min="0"
+                max="5"
+                defaultValue={rating}
                 required
                 className="w-full border p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               />
@@ -199,7 +208,7 @@ const UpdateBook = () => {
                 placeholder="Content"
                 defaultValue={content}
                 required
-                className="w-full border mt-4 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
+                className="w-full border px-2 mt-4 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
               ></textarea>
             </div>
           </div>

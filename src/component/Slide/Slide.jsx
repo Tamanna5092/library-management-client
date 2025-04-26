@@ -17,7 +17,6 @@ const Slide = () => {
     fetch("/slideCardBook.json")
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         setBooks(data);
       });
   }, []);

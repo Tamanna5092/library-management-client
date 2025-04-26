@@ -7,6 +7,7 @@ import { FaEyeSlash } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import google from '../../assets/icons/search.png'
 import github from '../../assets/icons/github.png'
+import axios from "axios";
 
 const SignIn = () => {
   const {showPassword, setShowPassword, signInWithGoogle, signInWithGithub, signIn, error, setError} = useContext(AuthContext)
@@ -17,7 +18,8 @@ const SignIn = () => {
   // google sign in
   const handleGoogleSignIn = async() => {
     try {
-      await signInWithGoogle()
+      const result = await signInWithGoogle()
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email}, {withCredentials: true })
       toast.success('Sign In Successful')
       navigate(fromState, {replace: true})
     } catch (error) {
@@ -28,7 +30,8 @@ const SignIn = () => {
   // github sign in
   const handleGithubSignIn = async() => {
     try {
-      await signInWithGithub()
+      const result = await signInWithGithub()
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email}, {withCredentials: true })
       toast.success('Sign In Successful')
       navigate(fromState, {replace: true})
     } catch (error) {
@@ -48,7 +51,7 @@ const SignIn = () => {
     try {
       const result = await signIn(email, password)
       toast.success('Sign In Successful')
-      console.log(result.user)
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {email: result?.user?.email}, {withCredentials: true })
       navigate(fromState, {replace: true})
     } catch (error) {
       console.error(error)
