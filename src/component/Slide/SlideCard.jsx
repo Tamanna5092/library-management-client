@@ -5,7 +5,7 @@ const {name, image , collection} = book
 
   return (
     <div>
-      <div className=" bg-gray-100 shadow-xl">
+      <div className="px-5 md:px-0 bg-gray-100 shadow-xl">
         <figure className="px-10 pt-10">
           <img
             src={image}

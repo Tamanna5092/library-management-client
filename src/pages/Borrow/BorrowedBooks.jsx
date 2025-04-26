@@ -31,7 +31,7 @@ const BorrowedBooks = () => {
       if (data.deletedCount > 0) {
         Swal.fire({
           title: "Good job!",
-          text: "You returned the button!",
+          text: "You returned the book!",
           icon: "success"
         });
         getData();

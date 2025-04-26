@@ -53,7 +53,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center gap-0">
-          <img className="w-16" src={logo} alt="" />
+          <img className="w-10 md:w-16" src={logo} alt="" />
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">

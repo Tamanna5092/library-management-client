@@ -4,7 +4,7 @@ const Books = ({ book }) => {
   const { _id, name, image, short_description, } = book;
 
     return (
-        <div className=''>
+        <div className='px-4 md:px-0'>
              <div className="card w-full h-full border-2 rounded-none">
           <figure className="px-10 pt-10">
             <img

@@ -7,7 +7,7 @@ import banner1 from "../../assets/banner1.jpg";
 const Banner = () => {
   return (
     <div className="my-10">
-      <div className="carousel w-full h-[600px]">
+      <div className="carousel w-full h-full md:h-[600px]">
         <div id="slide1" className="carousel-item relative w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-6">
             <div className="flex flex-col justify-center p-6 ml-0 md:ml-12">
@@ -45,7 +45,7 @@ const Banner = () => {
             </div>
             <div className="flex items-center justify-center">
               <img
-                className="w-full h-full object-cover"
+                className="w-full h-full md:h-[600px] object-cover"
                 src={banner3}
                 alt=""
               />
@@ -71,7 +71,7 @@ const Banner = () => {
             </div>
             <div className="flex items-center justify-center">
               <img
-                className="w-full max-h-[600px] object-cover"
+                className="w-full h-full md:h-[600px] object-cover"
                 src={banner2}
                 alt=""
               />

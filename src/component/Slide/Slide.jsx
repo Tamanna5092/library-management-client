@@ -34,7 +34,7 @@ const Slide = () => {
           768: { slidesPerView: 2 },
           1024: { slidesPerView: 4 },
         }}
-        className="mySwiper max-w-7xl max-auto"
+        className="mySwiper max-w-7xl max-auto cursor-grabbing"
       >
         {books.map((book) => (
           <SwiperSlide>

@@ -28,7 +28,7 @@ const Contact = () => {
     <section className=" bg-white dark:bg-gray-900">
       <div className="container py-12 mx-auto">
         <div className="max-w-7xl mx-auto lg:flex lg:items-center">
-          <div class="lg:w-1/2 animate__animated animate__fadeInLeft lg:mx-6">
+          <div class="px-4 md:px-0 lg:w-1/2 animate__animated animate__fadeInLeft lg:mx-6">
             <h1 class="text-2xl font-semibold text-gray-800 capitalize animate__animated animate__fadeInLef dark:text-white lg:text-3xl">
               Contact us for <br /> more info
             </h1>

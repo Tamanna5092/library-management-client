@@ -5,13 +5,13 @@ import Borrow from "./Borrow";
 const BookDetails = () => {
   const book = useLoaderData();
   const { name, image, quantity, author, category, publishing_year, publisher, number_of_pages, short_description, rating, content } = book;
-  
+
   return (
-    <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 my-10 md:grid-cols-2">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 my-10 px-4 md:px-0 md:grid-cols-2">
         <div>
-            <img className="w-full h-[600px]" src={image} alt="" />
+            <img className="w-full h-full md:h-[600px]" src={image} alt="" />
         </div>
-        <div>
+        <div className="">
             <h2 className="text-4xl font-rubik font-extrabold">{name}</h2>
             <h3 className="text-[#797979] my-3">Author: <span className="text-[#FF5722] font-rubik ml-2">{author}</span></h3>
             <p className="text-[#797979]">{short_description}</p>

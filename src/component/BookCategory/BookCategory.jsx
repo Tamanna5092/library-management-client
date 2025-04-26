@@ -22,7 +22,7 @@ const BookCategory = () => {
 
   return (
     <div className="my-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 gap-6 px-4 md:px-0 md:grid-cols-3 lg:grid-cols-5">
         {/* category 1 */}
         <div className="bg-gray-100">
           <h3 className="text-center text-white bg-green-600 py-1 hover:underline">

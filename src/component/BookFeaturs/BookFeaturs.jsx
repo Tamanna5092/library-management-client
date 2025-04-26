@@ -17,7 +17,7 @@ const BookFeaturs = () => {
   return (
     <div className="max-w-7xl mx-auto my-20">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-black">Our Book Collections</h1>
+        <h1 className="text-4xl font-bold text-black mb-4">Our Book Collections</h1>
         <p className="text-center text-[#666666]">
           Books open doors to new worlds, knowledge, and imagination. They
           inspire, educate, entertain, and connect readers across time and
