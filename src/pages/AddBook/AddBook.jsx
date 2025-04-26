@@ -36,12 +36,15 @@ const AddBook = () => {
         }
 
         try {
-          const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book`, bookData);
+          const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/book`, bookData, {withCredentials: true});
           toast.success('Book added successfully');
           navigate('/')
         }
         catch (error) {
             console.log(error);
+            if (error.response && error.response.status === 403) {
+              toast.error('You are not allowed to add this book. Only admin can add book.')
+            } 
         }
 
     }
